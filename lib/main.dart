@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:syncfusion_flutter_calendar/calendar.dart';
 
 void main() {
   return runApp(const CalendarApp());
@@ -15,116 +14,490 @@ class CalendarApp extends StatelessWidget {
   }
 }
 
-/// The hove page which hosts the calendar
 class MyHomePage extends StatefulWidget {
-  /// Creates the home page to display teh calendar widget.
   const MyHomePage({Key? key}) : super(key: key);
 
   @override
-  // ignore: library_private_types_in_public_api
   _MyHomePageState createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  double height = 900.0;
+  double height = 130;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: TweenAnimationBuilder<double>(
-          tween: Tween<double>(begin: 900, end: height),
-          duration: const Duration(seconds: 1),
-          builder: (BuildContext context, double size, Widget? child) {
-            return SizedBox(
-              height: size,
-              child: SfCalendar(
-                view: CalendarView.month,
-                dataSource: MeetingDataSource(_getDataSource()),
-                onTap: (CalendarTapDetails details) {
-                  setState(() {
-                    height = height == 900 ? 500 : 900;
-                  });
-                },
-                monthViewSettings: const MonthViewSettings(
-                  appointmentDisplayMode:
-                      MonthAppointmentDisplayMode.appointment,
+        child: Stack(
+          alignment: AlignmentDirectional.topCenter,
+          children: [
+            Positioned(
+              top: 15,
+              left: 10,
+              child: Text(
+                'Monday 21 Nov 2021',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
-            );
-          },
+            ),
+            Positioned(
+              top: 40,
+              left: 10,
+              child: Row(
+                children: [
+                  Text(
+                    'TERM 211: WEEK 13',
+                    style: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                  Icon(
+                    Icons.arrow_forward_ios_sharp,
+                    size: 15,
+                  )
+                ],
+              ),
+            ),
+            Positioned(
+              top: 10,
+              right: 10,
+              child: Icon(
+                Icons.add_circle_outline,
+                size: 35,
+              ),
+            ),
+            Positioned(
+              top: 70,
+              child: SizedBox(
+                width: 380,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Text(
+                      'U',
+                      style: TextStyle(
+                          fontSize: 15, fontWeight: FontWeight.normal),
+                    ),
+                    Text(
+                      'M',
+                      style: TextStyle(
+                          fontSize: 15, fontWeight: FontWeight.normal),
+                    ),
+                    Text(
+                      'T',
+                      style: TextStyle(
+                          fontSize: 15, fontWeight: FontWeight.normal),
+                    ),
+                    Text(
+                      'W',
+                      style: TextStyle(
+                          fontSize: 15, fontWeight: FontWeight.normal),
+                    ),
+                    Text(
+                      'R',
+                      style: TextStyle(
+                          fontSize: 15, fontWeight: FontWeight.normal),
+                    ),
+                    Text(
+                      'F',
+                      style: TextStyle(
+                          fontSize: 15, fontWeight: FontWeight.normal),
+                    ),
+                    Text(
+                      'S',
+                      style: TextStyle(
+                          fontSize: 15, fontWeight: FontWeight.normal),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            Positioned(
+              top: 90,
+              child: Center(
+                child: Container(
+                  height: 700,
+                  width: 380,
+                  color: Color(0xFFEEAF4EB),
+                  child: Column(
+                    children: [
+                      Row(
+                        children: [
+                          Container(
+                            height: height,
+                            width: 53,
+                            color: Colors.white,
+                            child: Text(
+                              '1',
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                          SizedBox(
+                            width: 1.5,
+                          ),
+                          Container(
+                            height: height,
+                            width: 53,
+                            color: Colors.white,
+                            child: Text(
+                              '2',
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                          SizedBox(
+                            width: 1.5,
+                          ),
+                          Container(
+                            height: height,
+                            width: 53,
+                            color: Colors.white,
+                            child: Text(
+                              '3',
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                          SizedBox(
+                            width: 1.5,
+                          ),
+                          Container(
+                            height: height,
+                            width: 53,
+                            color: Colors.white,
+                            child: Text(
+                              '4',
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                          SizedBox(
+                            width: 1.5,
+                          ),
+                          Container(
+                            height: height,
+                            width: 53,
+                            color: Colors.white,
+                            child: Text(
+                              '5',
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                          SizedBox(
+                            width: 1.5,
+                          ),
+                          Container(
+                            height: height,
+                            width: 53,
+                            child: Text(
+                              '6',
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                          SizedBox(
+                            width: 1.5,
+                          ),
+                          Container(
+                            height: height,
+                            width: 53,
+                            child: Text(
+                              '7',
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 2,
+                      ),
+                      Row(
+                        children: [
+                          Container(
+                            height: height,
+                            width: 53,
+                            color: Colors.white,
+                            child: Text(
+                              '8',
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                          SizedBox(
+                            width: 1.5,
+                          ),
+                          Container(
+                            height: height,
+                            width: 53,
+                            color: Colors.white,
+                            child: Text(
+                              '9',
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                          SizedBox(
+                            width: 1.5,
+                          ),
+                          Container(
+                            height: height,
+                            width: 53,
+                            color: Colors.white,
+                            child: Text(
+                              '10',
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                          SizedBox(
+                            width: 1.5,
+                          ),
+                          Container(
+                            height: height,
+                            width: 53,
+                            color: Colors.white,
+                            child: Text(
+                              '11',
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                          SizedBox(
+                            width: 1.5,
+                          ),
+                          Container(
+                            height: height,
+                            width: 53,
+                            color: Colors.white,
+                            child: Text(
+                              '12',
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                          SizedBox(
+                            width: 1.5,
+                          ),
+                          Container(
+                            height: height,
+                            width: 53,
+                            child: Text(
+                              '13',
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                          Container(
+                            height: height,
+                            width: 53,
+                            child: Text(
+                              '14',
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 2,
+                      ),
+                      Row(
+                        children: [
+                          Container(
+                            height: height,
+                            width: 53,
+                            color: Colors.white,
+                            child: Text(
+                              '15',
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                          SizedBox(
+                            width: 1.5,
+                          ),
+                          Container(
+                            height: height,
+                            width: 53,
+                            color: Colors.white,
+                            child: Text(
+                              '16',
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                          SizedBox(
+                            width: 1.5,
+                          ),
+                          Container(
+                            height: height,
+                            width: 53,
+                            color: Colors.white,
+                            child: Text(
+                              '17',
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                          SizedBox(
+                            width: 1.5,
+                          ),
+                          Container(
+                            height: height,
+                            width: 53,
+                            color: Colors.white,
+                            child: Text(
+                              '18',
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                          SizedBox(
+                            width: 1.5,
+                          ),
+                          Container(
+                            height: height,
+                            width: 53,
+                            color: Colors.white,
+                            child: Text(
+                              '19',
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                          SizedBox(
+                            width: 1.5,
+                          ),
+                          Container(
+                            height: height,
+                            width: 53,
+                            child: Text(
+                              '20',
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                          SizedBox(
+                            width: 1.5,
+                          ),
+                          Container(
+                            height: height,
+                            width: 53,
+                            child: Text(
+                              '21',
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 2,
+                      ),
+                      Row(
+                        children: [
+                          Container(
+                            height: height,
+                            width: 53,
+                            color: Colors.white,
+                            child: Text(
+                              '22',
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                          SizedBox(
+                            width: 1.5,
+                          ),
+                          Container(
+                            height: height,
+                            width: 53,
+                            color: Colors.white,
+                            child: Text(
+                              '23',
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                          SizedBox(
+                            width: 1.5,
+                          ),
+                          Container(
+                            height: height,
+                            width: 53,
+                            color: Colors.white,
+                            child: Text(
+                              '24',
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                          SizedBox(
+                            width: 1.5,
+                          ),
+                          Container(
+                            height: height,
+                            width: 53,
+                            color: Colors.white,
+                            child: Text(
+                              '25',
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                          SizedBox(
+                            width: 1.5,
+                          ),
+                          Container(
+                            height: height,
+                            width: 53,
+                            color: Colors.white,
+                            child: Text(
+                              '26',
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                          SizedBox(
+                            width: 1.5,
+                          ),
+                          Container(
+                            height: height,
+                            width: 53,
+                            child: Text(
+                              '27',
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                          SizedBox(
+                            width: 1.5,
+                          ),
+                          Container(
+                            height: height,
+                            width: 53,
+                            child: Text(
+                              '28',
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 2,
+                      ),
+                      Row(
+                        children: [
+                          Container(
+                            height: height,
+                            width: 53,
+                            color: Colors.white,
+                            child: Text(
+                              '29',
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                          SizedBox(
+                            width: 1.5,
+                          ),
+                          Container(
+                            height: height,
+                            width: 53,
+                            color: Colors.white,
+                            child: Text(
+                              '30',
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );
   }
-
-  List<Meeting> _getDataSource() {
-    final List<Meeting> meetings = <Meeting>[];
-    final DateTime today = DateTime.now();
-    final DateTime startTime =
-        DateTime(today.year, today.month, today.day, 9, 0, 0);
-    final DateTime endTime = startTime.add(const Duration(hours: 2));
-    meetings.add(
-      Meeting('Conference',Icon(Icons.link), startTime, endTime, const Color(0xFF0F8644), false),
-    );
-    return meetings;
-  }
-}
-
-class MeetingDataSource extends CalendarDataSource {
-  MeetingDataSource(List<Meeting> source) {
-    appointments = source;
-  }
-
-  @override
-  DateTime getStartTime(int index) {
-    return _getMeetingData(index).from;
-  }
-
-  @override
-  DateTime getEndTime(int index) {
-    return _getMeetingData(index).to;
-  }
-
-  @override
-  String getSubject(int index) {
-    return _getMeetingData(index).eventName;
-  }
-
-  @override
-  Color getColor(int index) {
-    return _getMeetingData(index).background;
-  }
-
-  @override
-  bool isAllDay(int index) {
-    return _getMeetingData(index).isAllDay;
-  }
-
-  Meeting _getMeetingData(int index) {
-    final dynamic meeting = appointments![index];
-    late final Meeting meetingData;
-    if (meeting is Meeting) {
-      meetingData = meeting;
-    }
-
-    return meetingData;
-  }
-}
-
-class Meeting {
-  Meeting(this.eventName, this.icon, this.from, this.to, this.background,
-      this.isAllDay);
-
-  String eventName;
-
-  Icon icon;
-
-  DateTime from;
-
-  DateTime to;
-
-  Color background;
-
-  bool isAllDay;
 }

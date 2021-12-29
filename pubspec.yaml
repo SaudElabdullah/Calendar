@@ -8,7 +8,6 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.4
-  syncfusion_flutter_calendar: ^19.4.38
 
 dev_dependencies:
   flutter_test:
