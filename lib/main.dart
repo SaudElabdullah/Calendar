@@ -155,7 +155,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                   ratio = ratio == 0.4 ? 0.6 : 0.4;
                                 });
                               },
-                              child: TextWidget(
+                              child: const TextWidget(
                                 text: '1',
                                 color: Colors.white,
                               ),
