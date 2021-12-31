@@ -11,7 +11,10 @@ class CalendarApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(title: 'Calendar Demo', home: MyHomePage());
+    return const MaterialApp(
+        title: 'Calendar Demo',
+        debugShowCheckedModeBanner: false,
+        home: MyHomePage());
   }
 }
 
@@ -23,11 +26,13 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  double height = 130;
+  double height = 700.0;
+  double ratio = 0.4;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: Stack(
           alignment: AlignmentDirectional.topCenter,
@@ -118,24 +123,49 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             Positioned(
               top: 90,
-              child: Center(
-                child: Container(
-                  height: 700,
-                  width: 380,
-                  color: const Color(0xFFEAF4EB),
-                  child: GridView.builder(
-                    itemCount: calendar.length,
-                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 7,
-                      crossAxisSpacing: 2.0,
-                      mainAxisSpacing: 3.0,
-                      childAspectRatio: 0.4,
-                    ),
-                    itemBuilder: (BuildContext context, int index) {
-                      return calendar[index];
+              child: TweenAnimationBuilder(
+                tween: Tween<double>(begin: 700, end: height),
+                duration: const Duration(milliseconds: 650),
+                builder:
+                    (BuildContext context, double animation1, Widget? child) {
+                  return TweenAnimationBuilder(
+                    tween: Tween<double>(begin: 0.4, end: ratio),
+                    duration: const Duration(milliseconds: 700),
+                    builder: (BuildContext context, double animation2,
+                        Widget? child) {
+                      return Container(
+                        height: animation1,
+                        width: 380,
+                        color: const Color(0xFFEAF4EB),
+                        child: GridView.builder(
+                          physics: const NeverScrollableScrollPhysics(),
+                          itemCount: 31,
+                          gridDelegate:
+                              SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 7,
+                            crossAxisSpacing: 1.0,
+                            mainAxisSpacing: 1.0,
+                            childAspectRatio: animation2,
+                          ),
+                          itemBuilder: (BuildContext context, int index) {
+                            return GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  height = height == 700 ? 450 : 700;
+                                  ratio = ratio == 0.4 ? 0.6 : 0.4;
+                                });
+                              },
+                              child: TextWidget(
+                                text: '1',
+                                color: Colors.white,
+                              ),
+                            );
+                          },
+                        ),
+                      );
                     },
-                  ),
-                ),
+                  );
+                },
               ),
             ),
           ],
