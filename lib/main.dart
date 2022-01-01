@@ -1,3 +1,4 @@
+import 'package:calendar/day_container.dart';
 import 'package:calendar/list.dart';
 import 'package:flutter/material.dart';
 
@@ -133,36 +134,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     duration: const Duration(milliseconds: 700),
                     builder: (BuildContext context, double animation2,
                         Widget? child) {
-                      return Container(
-                        height: animation1,
-                        width: 380,
-                        color: const Color(0xFFEAF4EB),
-                        child: GridView.builder(
-                          physics: const NeverScrollableScrollPhysics(),
-                          itemCount: 31,
-                          gridDelegate:
-                              SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 7,
-                            crossAxisSpacing: 1.0,
-                            mainAxisSpacing: 1.0,
-                            childAspectRatio: animation2,
-                          ),
-                          itemBuilder: (BuildContext context, int index) {
-                            return GestureDetector(
-                              onTap: () {
-                                setState(() {
-                                  height = height == 700 ? 450 : 700;
-                                  ratio = ratio == 0.4 ? 0.6 : 0.4;
-                                });
-                              },
-                              child: const TextWidget(
-                                text: '1',
-                                color: Colors.white,
-                              ),
-                            );
-                          },
-                        ),
-                      );
+                      return DayContainer(animation1, animation2);
                     },
                   );
                 },
