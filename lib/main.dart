@@ -30,6 +30,8 @@ class _MyHomePageState extends State<MyHomePage> {
   double height = 700.0;
   double ratio = 0.4;
 
+  //TODO: fix the animation issue.
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
