@@ -1,4 +1,5 @@
-import 'package:calendar/list.dart';
+import 'package:calendar/calendar_dates.dart';
+import 'package:calendar/days.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -26,42 +27,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  double height = 700.0;
-  double ratio = 0.4;
-  List<bool> chosen = [
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-  ];
+
 
   //TODO: fix the animation issue.
 
@@ -111,120 +77,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 size: 35,
               ),
             ),
-            Positioned(
-              top: 70,
-              child: SizedBox(
-                width: 380,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: const [
-                    Text(
-                      'U',
-                      style: TextStyle(
-                        fontSize: 15,
-                        fontWeight: FontWeight.normal,
-                      ),
-                    ),
-                    Text(
-                      'M',
-                      style: TextStyle(
-                        fontSize: 15,
-                        fontWeight: FontWeight.normal,
-                      ),
-                    ),
-                    Text(
-                      'T',
-                      style: TextStyle(
-                        fontSize: 15,
-                        fontWeight: FontWeight.normal,
-                      ),
-                    ),
-                    Text(
-                      'W',
-                      style: TextStyle(
-                        fontSize: 15,
-                        fontWeight: FontWeight.normal,
-                      ),
-                    ),
-                    Text(
-                      'R',
-                      style: TextStyle(
-                        fontSize: 15,
-                        fontWeight: FontWeight.normal,
-                      ),
-                    ),
-                    Text(
-                      'F',
-                      style: TextStyle(
-                        fontSize: 15,
-                        fontWeight: FontWeight.normal,
-                      ),
-                    ),
-                    Text(
-                      'S',
-                      style: TextStyle(
-                        fontSize: 15,
-                        fontWeight: FontWeight.normal,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            Positioned(
-              top: 90,
-              child: TweenAnimationBuilder(
-                tween: Tween<double>(begin: 700, end: height),
-                duration: const Duration(milliseconds: 300),
-                builder:
-                    (BuildContext context, double animation1, Widget? child) {
-                  return TweenAnimationBuilder(
-                    tween: Tween<double>(begin: 0.4, end: ratio),
-                    duration: const Duration(milliseconds: 400),
-                    builder: (BuildContext context, double animation2,
-                        Widget? child) {
-                      return Container(
-                        height: animation1,
-                        width: 380,
-                        color: const Color(0xFFEAF4EB),
-                        child: GridView.builder(
-                          physics: const NeverScrollableScrollPhysics(),
-                          itemCount: 31,
-                          gridDelegate:
-                              SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 7,
-                            crossAxisSpacing: 1.0,
-                            mainAxisSpacing: 1.0,
-                            childAspectRatio: animation2,
-                          ),
-                          itemBuilder: (BuildContext context, int index) {
-                            return GestureDetector(
-                              onTap: () {
-                                setState(() {
-                                  height = height == 700 ? 450 : 700;
-                                  ratio = ratio == 0.4 ? 0.6 : 0.4;
-                                  for (var c = 0; chosen.length > c ; c++) {
-                                    if(c != index){
-                                      chosen[c] = false;
-                                    }
-                                  }
-                                  chosen[index] = !chosen[index];
-                                });
-                              },
-                              child: TextWidget(
-                                text: '${index + 1}',
-                                color: Colors.white,
-                                chosen: chosen[index],
-                              ),
-                            );
-                          },
-                        ),
-                      );
-                    },
-                  );
-                },
-              ),
-            ),
+            const Days(),
+            const CalendarDates(),
           ],
         ),
       ),
