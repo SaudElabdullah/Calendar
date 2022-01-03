@@ -9,44 +9,44 @@ class CalendarDates extends StatefulWidget {
 }
 
 class _CalendarDatesState extends State<CalendarDates> {
+  double height = 700.0;
+  double ratio = 0.4;
+  List<bool> chosen = [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+  ];
   @override
   Widget build(BuildContext context) {
-    double height = 700.0;
-    double ratio = 0.4;
-    List<bool> chosen = [
-      false,
-      false,
-      false,
-      false,
-      false,
-      false,
-      false,
-      false,
-      false,
-      false,
-      false,
-      false,
-      false,
-      false,
-      false,
-      false,
-      false,
-      false,
-      false,
-      false,
-      false,
-      false,
-      false,
-      false,
-      false,
-      false,
-      false,
-      false,
-      false,
-      false,
-      false,
-      false,
-    ];
     return Positioned(
       top: 90,
       child: TweenAnimationBuilder(
