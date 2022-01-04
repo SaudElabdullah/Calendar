@@ -6,16 +6,16 @@ void main() {
   return runApp(const CalendarApp());
 }
 
-/// The app which hosts the home page which contains the calendar on it.
 class CalendarApp extends StatelessWidget {
   const CalendarApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-        title: 'Calendar Demo',
-        debugShowCheckedModeBanner: false,
-        home: MyHomePage());
+      title: 'Calendar Demo',
+      debugShowCheckedModeBanner: false,
+      home: MyHomePage(),
+    );
   }
 }
 
@@ -27,13 +27,10 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
-
-  //TODO: fix the animation issue.
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white,
       body: SafeArea(
         child: Stack(
