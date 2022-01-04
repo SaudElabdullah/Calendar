@@ -1,9 +1,5 @@
 # calendar
 
-A new Flutter project.
-
-## Getting Started
-
 This project is a simple Calendar flutter app to just show the functionality.
 
 A few resources to get you started if this is your first Flutter project:
